@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-profile-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: user-profile-api
+  template:
+    metadata:
+      labels:
+        app: user-profile-api
+    spec:
+      containers:
+      - name: api-container
+        image: our-registry/user-profile-api:latest # Latest image
+        ports:
+        - containerPort: 8080
